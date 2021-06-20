@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html id="html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP-Terminal by Segilmez06 - /bin/sh</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: rgb(75, 75, 75);
+            overflow: hidden;
+        }
+
+        #divResize {
+            background-image: linear-gradient(135deg, rgb(38, 0, 255), rgb(204, 0, 255));
+            top: 50px;
+            left: 50px;
+            border-radius: 7px;
+            width: 820px;
+            height: 520px;
+            border: 0px;
+            padding: 0px;
+            margin: 0px;
+            cursor: move;
+        }
+
+        #controlbox{
+            width: 100%;
+        }
+
+        #Label{
+            float: left;
+            position: relative;
+            left: 10px;
+            top: 3px;
+            font-family: ubuntu;
+            font-size: 20px;
+        }
+
+        .controlbuttons{
+            background-color: transparent;
+            color:black;
+            float: right;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            border-radius: 100%;
+            position: relative;
+            top: 3px;
+            height: 20px;
+            width: 20px;
+            text-align: center;
+            right:5px;
+        }
+
+        #controlx:hover{
+            background-color: red;
+            color: white;
+        }
+
+        #controly:hover{
+            background-color: orange;
+        }
+
+        #controlz:hover{
+            background-color: yellow;
+        }
+
+        .cont{
+            position: relative;
+            width: 810px;
+            height: 475px;
+            top:25px;
+            left:5px;
+            border-radius: 7px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        #Box{
+            position: relative;
+            width: 810px;
+            height: 475px;
+            top: -23px;
+            left: 0px;
+            border-radius: 7px;
+            background-color: rgba(0, 0, 0, 0);
+            color: white;
+            margin: 0;
+            padding: 0;
+            border: 0 transparent;
+
+            resize: none;
+            outline: none;
+            font-family: consolas;
+            font-size: 17px;
+
+        }
+
+        #Box::-webkit-scrollbar {
+            width: 1em;
+        }
+
+        #Box::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        #Box::-webkit-scrollbar-thumb {
+            background-color: rgb(209, 0, 209);
+            border-radius: 7px;
+        }
+
+        #PathLbl{
+            position: absolute;
+            bottom: 1px;
+            left: 5px;
+            font-family: ubuntu;
+            font-size: 14px;
+            color: rgb(189, 189, 189);
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+    <script>
+        var isFS = false;
+        var HTMLPage = document.getElementById("html");
+
+        function init(){
+            $("#divResize").draggable();
+        }
+
+        function FSStateChange(){
+            if (isFS){
+                isFS = false;
+                document.exitFullscreen();
+            }
+            else{
+                isFS = true;
+                HTMLPage.requestFullscreen();
+            }
+        }
+    </script>
+
+</head>
+<body onload="init()">
+    <div>
+        <div id="divResize">
+            <div id="controlbox">
+                <div id="Label">HTTP-Terminal by Segilmez06 - /bin/sh</div>
+                <button class="controlbuttons" id="controlx" onclick="window.close();">X</button>
+                <button class="controlbuttons" id="controly" onclick="FSStateChange();">□</button>
+                <button class="controlbuttons" id="controlz" onclick="">-</button>
+            </div>
+
+            <div class="cont">
+                <!--<textarea id="Box"></textarea>-->
+                <iframe src="http://127.0.0.1:2349/" id="Box"></iframe>
+            </div>
+
+            <div id="PathLbl">Path: /home/sarp/Desktop</div>
+        </div>
+    </div>
+</body>
+</html>

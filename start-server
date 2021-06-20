@@ -1,0 +1,11 @@
+#!/bin/bash
+echo ""
+echo "HTTP-Terminal by Segilmez06"
+echo ""
+echo "Server is hosting on http://localhost:2348"
+echo ""
+echo ""
+echo "==============CONSOLE=============="
+./nweb 2348 ./ > /dev/null
+./gotty -w -p 2349 --term hterm /bin/sh > /dev/null
+killall nweb
